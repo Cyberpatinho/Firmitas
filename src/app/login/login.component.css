@@ -13,3 +13,25 @@
     background-repeat: no-repeat;
     background-size: cover;
 }
+
+#box {
+    background-color: rgb(98, 68, 52);
+    border-radius: 8px;
+    padding: 35px;
+
+    border-style: double;
+    border-color: rgb(241, 204, 110);
+    border-width: 10px;
+}
+
+.my-text {
+    color: rgb(241, 204, 110);
+}
+
+label {
+    color: rgb(241, 204, 110);
+}
+
+hr {
+    color: rgb(241, 204, 110);
+}
