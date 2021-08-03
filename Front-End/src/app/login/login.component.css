@@ -24,6 +24,21 @@
     border-width: 10px;
 }
 
+h1 {
+    font-family: "Catholic Roman";
+}
+
+label {
+    font-family: "Catholic Roman";
+    font-size: 22px;
+}
+
+.blog-name {
+    font-family: "Catholic Roman";
+    font-size: 70px;
+    text-justify: center;
+}
+
 .my-text {
     color: rgb(241, 204, 110);
 }

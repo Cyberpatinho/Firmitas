@@ -25,6 +25,15 @@
 
 }
 
+h1 {
+    font-family: "Catholic Roman";
+}
+
+label {
+    font-family: "Catholic Roman";
+    font-size: 22px;
+}
+
 .my-text {
     color: rgb(241, 204, 110);
 }

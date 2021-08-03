@@ -31,11 +31,6 @@ export class LoginComponent implements OnInit {
       environment.pic = this.userLogin.foto;
       environment.id = this.userLogin.id;
 
-      console.log(environment.token);
-      console.log(environment.name);
-      console.log(environment.pic);
-      console.log(environment.id);
-
       this.router.navigate(["/home"]);
     }, err => {
       if (err.status == 500) {

@@ -1,0 +1,40 @@
+.bg {
+    /*background-image: url("../../assets/img/tempbg.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;*/
+
+    height: 65px;
+    background-image: linear-gradient(rgb(43, 58, 224));
+}
+
+.user-icon {
+    height: 50px; 
+    width: 50px;
+    border-style: solid;
+    border-color: rgb(216, 216, 11);
+    border-width: 2.5px;
+}
+
+.nav-item {
+    font-family: "Catholic Roman";
+    font-size: 36px;
+    color: rgb(216, 216, 11);
+}
+
+a {
+    color: rgb(216, 216, 11);
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: none;
+}
+
+.fs-54 {
+    font-size: 54pt;
+}
+
+.fs-18 {
+    font-size: 18pt;
+}

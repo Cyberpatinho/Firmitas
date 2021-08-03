@@ -1,1 +1,5 @@
+<app-nav *ngIf="auth.loggedIn()"></app-nav>
+
 <router-outlet></router-outlet>
+
+<app-footer *ngIf="auth.loggedIn()"></app-footer>
