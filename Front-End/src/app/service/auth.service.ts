@@ -23,6 +23,10 @@ export class AuthService {
     return this.http.post<User>("http://localhost:8080/usuarios/cadastrar", user);
   }
 
+  getUserById(id: number): Observable<User> {
+    return this.http.get<User>(`http://localhost:8080/usuarios/${id}`);
+  }
+
   loggedIn() {
     let ok: boolean = false;
     if (environment.token != "") {

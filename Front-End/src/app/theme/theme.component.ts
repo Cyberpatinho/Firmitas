@@ -12,7 +12,7 @@ import { ThemeService } from '../service/theme.service';
 export class ThemeComponent implements OnInit {
 
   theme: Theme = new Theme();
-  themeList: Theme[];
+  themeList: Theme[]
 
   constructor(
     private router: Router,
@@ -20,17 +20,28 @@ export class ThemeComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    if(environment.token == ""){
+    
+    if(environment.token == "") {
+      alert("Sua seção expirou, faça login novamente.");
       this.router.navigate(["/login"]);
     }
+
+    this.getAllThemes();
+
   }
 
   addTheme() {
-    console.log(this.theme.descricao);
     this.themeService.postTheme(this.theme).subscribe((resp: Theme) => {
       this.theme = resp;
       alert("Tema cadastrado com sucesso!");
+      this.getAllThemes();
       this.theme = new Theme();
+    })
+  }
+
+  getAllThemes() {
+    this.themeService.getAllThemes().subscribe((resp: Theme[]) => {
+      this.themeList = resp;
     }) 
   }
 

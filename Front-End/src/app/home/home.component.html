@@ -35,7 +35,7 @@
                 aria-selected="true">Todas as Postagens</button>
         </li>
         <li class="nav-item" role="presentation">
-            <button class="nav-link text-secondary fw-bold" id="minhasPostagens-tab" data-bs-toggle="tab"
+            <button (click)="getUserById()" class="nav-link text-secondary fw-bold" id="minhasPostagens-tab" data-bs-toggle="tab"
                 data-bs-target="#minhasPostagens" type="button" role="tab" aria-controls="minhasPostagens"
                 aria-selected="false">Minhas Postagens</button>
         </li>
@@ -46,15 +46,58 @@
         </li>
     </ul>
 
-    <div class="tab-content" id="myTabContent">
+    <div class="tab-content mt-5" id="myTabContent">
         <div class="tab-pane fade show active" id="todasPostagens" role="tabpanel" aria-labelledby="todasPostagens-tab">
-            Todas as postagens
+
+            <div class="card-columns">
+                <div *ngFor="let p of postList" class="card text-center">
+                    <div class="card-body">
+                        <img src="{{p.pic}}" class="card-img-top" alt="...">
+                        <h5 class="card-title">{{p.titulo}}</h5>
+                        <p class="card-text">{{p.texto}}</p>
+                        <p class="card-text"><small class="text-muted">{{p.data | date: "dd/MM/yyyy"}}</small></p>
+                        <p class="card-text"><small class="text-muted">by: {{p.usuario.nome}}</small></p>
+
+                        <a [routerLink]="['/post-edit', p.id]" class="text-info me-3" href="">Editar</a>
+                        <a [routerLink]="['/post-delete', p.id]" class="text-danger" href="">Apagar</a>
+
+                    </div>
+                </div>
+            </div>
+
+
         </div>
         <div class="tab-pane fade" id="minhasPostagens" role="tabpanel" aria-labelledby="minhasPostagens-tab">
-            Minhas postagens
+
+            <div class="card-columns">
+                <div *ngFor="let p of user.postagem" class="card text-center">
+                    <div class="card-body">
+                        <img src="{{p.pic}}" class="card-img-top" alt="...">
+                        <h5 class="card-title">{{p.titulo}}</h5>
+                        <p class="card-text">{{p.texto}}</p>
+                        <p class="card-text"><small class="text-muted">{{p.data | date: "dd/MM/yyyy"}}</small></p>
+                        <p class="card-text"><small class="text-muted">by: {{user.nome}}</small></p>
+
+                    </div>
+                </div>
+            </div>
+
         </div>
+
         <div class="tab-pane fade" id="postagemTema" role="tabpanel" aria-labelledby="postagemTema-tab">
-            Postagens por tema
+
+            <div *ngFor="let t of themeList" class="card-columns">
+                <div *ngFor="let p of t.postagem" class="card text-center">
+                    <div class="card-body">
+                        <img src="{{p.pic}}" class="card-img-top" alt="...">
+                        <h5 class="card-title">{{p.titulo}}</h5>
+                        <p class="card-text">{{p.texto}}</p>
+                        <p class="card-text"><small class="text-muted">{{p.data | date: "dd/MM/yyyy"}}</small></p>
+                        <p class="card-text"><small class="text-muted">by: {{p.usuario.nome}}</small></p>
+
+                    </div>
+                </div>
+
         </div>
     </div>
 
@@ -72,16 +115,24 @@
             <div class="modal-body">
 
                 <div class="form-control">
+
+                    <label for="pic" style="margin-top: 20px;">Foto</label>
+                    <input [(ngModel)]="post.pic" type="text" class="form-control" id="pic"
+                        placeholder="Insira o link para a foto do post">
+
                     <label for="titulo" style="margin-top: 20px;">Título</label>
-                    <input type="text" class="form-control" id="titulo" placeholder="Digite o título">
+                    <input [(ngModel)]="post.titulo" type="text" class="form-control" id="titulo"
+                        placeholder="Digite o título">
 
                     <label for="texto" style="margin-top: 20px;">Texto</label>
-                    <textarea class="form-control" name="texto" id="texto" rows="3"></textarea>
+                    <textarea [(ngModel)]="post.texto" class="form-control" name="texto" id="texto" rows="3"></textarea>
 
                     <label for="tema" style="margin-top: 20px;">Escolha um tema ou <a data-bs-dismiss="modal"
                             routerLink="/theme">cadastre um novo</a>:</label>
-                    <select class="form-control" name="tema" id="tema">
-                        <option value="">Tema</option>
+                    <select [(ngModel)]="themeId" (change)="getThemeById()" class="form-control" name="tema" id="tema">
+                        <option *ngFor="let t of themeList" value="{{t.id}}">
+                            {{t.descricao}}
+                        </option>
                     </select>
 
                 </div>
@@ -89,7 +140,8 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cancelar</button>
-                <button type="button" class="btn btn-success">Publicar</button>
+                <button (click)="postPost()" type="button" data-bs-dismiss="modal"
+                    class="btn btn-success">Publicar</button>
             </div>
         </div>
     </div>

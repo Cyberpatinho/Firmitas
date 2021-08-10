@@ -12,6 +12,10 @@ import { LoginComponent } from './login/login.component';
 import { SignupComponent } from './signup/signup.component';
 import { HomeComponent } from './home/home.component';
 import { ThemeComponent } from './theme/theme.component';
+import { ThemeEditComponent } from './edit/theme-edit/theme-edit.component';
+import { ThemeDeleteComponent } from './delete/theme-delete/theme-delete.component';
+import { PostEditComponent } from './edit/post-edit/post-edit.component';
+import { PostDeleteComponent } from './delete/post-delete/post-delete.component';
 
 
 @NgModule({
@@ -22,7 +26,11 @@ import { ThemeComponent } from './theme/theme.component';
     LoginComponent,
     SignupComponent,
     HomeComponent,
-    ThemeComponent
+    ThemeComponent,
+    ThemeEditComponent,
+    ThemeDeleteComponent,
+    PostEditComponent,
+    PostDeleteComponent
   ],
   imports: [
     BrowserModule,

@@ -17,13 +17,24 @@ export class ThemeService {
     headers: new HttpHeaders().set("Authorization", environment.token)
   }
 
-  getAllTheme(): Observable<Theme[]> {
+  getAllThemes(): Observable<Theme[]> {
     return this.http.get<Theme[]>("http://localhost:8080/tema", this.token);
   }
 
-  postTheme(theme: Theme): Observable<Theme> {
+  getThemeById(id: number): Observable<Theme> {
+    return this.http.get<Theme>(`http://localhost:8080/tema/${id}`, this.token);
+  }
+
+  postTheme(theme: Theme): Observable<Theme> { 
     return this.http.post<Theme>("http://localhost:8080/tema", theme, this.token);
   }
-  
+
+  putTheme(theme: Theme): Observable<Theme> {
+    return this.http.put<Theme>("http://localhost:8080/tema", theme, this.token);
+  }
+
+  deleteTheme(id: number): Observable<Theme> {
+    return this.http.delete<Theme>(`http://localhost:8080/tema/${id}`, this.token);
+  }
 
 }
